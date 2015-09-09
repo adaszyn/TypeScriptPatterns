@@ -1,4 +1,10 @@
 import {myModule} from "./my_module"
-import {Car} from "CarModule"
+import {CarModule} from "./builder/CarModule"
 myModule();
-console.log(Car);
+var carSalesman = new CarModule.CarSalesman();
+var pussyWagonBuilder = new CarModule.PussyWagonBuilder();
+carSalesman.carBuilder = pussyWagonBuilder;
+carSalesman.constructCar();
+var car = carSalesman.getCar();
+console.log(car);
+
