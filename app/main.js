@@ -1,6 +1,6 @@
-System.register(["./my_module", "./builder/CarModule", "./singleton/Singleton"], function(exports_1) {
-    var my_module_1, CarModule_1, Singleton_1;
-    var carSalesman, pussyWagonBuilder, car, riri, riri2, error;
+System.register(["./my_module", "./builder/CarModule", "./singleton/Singleton", "./factoryMethod/PizzaModule"], function(exports_1) {
+    var my_module_1, CarModule_1, Singleton_1, PizzaModule_1;
+    var carSalesman, pussyWagonBuilder, car, riri, riri2, error, PizzaFactory, pizza;
     return {
         setters:[
             function (_my_module_1) {
@@ -11,6 +11,9 @@ System.register(["./my_module", "./builder/CarModule", "./singleton/Singleton"],
             },
             function (_Singleton_1) {
                 Singleton_1 = _Singleton_1;
+            },
+            function (_PizzaModule_1) {
+                PizzaModule_1 = _PizzaModule_1;
             }],
         execute: function() {
             my_module_1.myModule();
@@ -24,9 +27,13 @@ System.register(["./my_module", "./builder/CarModule", "./singleton/Singleton"],
                 riri2 = new Singleton_1.Singleton.Rihanna();
             }
             catch (error) {
+                console.log('Exception thrown!');
             }
-            console.log(riri.needs());
-            console.log(riri2.needs());
+            // console.log(riri.needs());
+            // console.log(riri2.needs());
+            PizzaFactory = new PizzaModule_1.PizzaModule.HawaiianPizzaFactory();
+            pizza = PizzaFactory.getPizza();
+            console.log(pizza.getType());
         }
     }
 });
